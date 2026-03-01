@@ -2,20 +2,15 @@ class Solution {
   public:
     void pushZerosToEnd(vector<int>& arr) {
         // code here
-        vector<int>v;
-        for(auto &i:arr)
+        int j=0;
+        for(int i=0;i<arr.size();i++)
         {
-            if(i!=0)
+            if(arr[i]!=0)
             {
-                v.push_back(i);
+                
+                swap(arr[i],arr[j]);
+                j++;
             }
         }
-        int n=v.size();
-        for(int i=0;i<arr.size()-n;i++)
-        {
-            v.push_back(0);
-        }
-        arr.clear();
-        arr=v;
     }
 };
