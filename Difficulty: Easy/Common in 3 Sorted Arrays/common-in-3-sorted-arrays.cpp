@@ -1,41 +1,32 @@
 class Solution {
   public:
-    // Function to find common elements in three arrays.
-    vector<int> commonElements(vector<int> &arr1, vector<int> &arr2,
-                               vector<int> &arr3) {
-        // Code Here
-        set<int>s1,s2,s3;
-        for(auto &i:arr1)
-        {
-            s1.insert(i);
-        }
-        for(auto &i:arr2)
-        {
-            s2.insert(i);
-        }
-        for(auto &i:arr3)
-        {
-            s3.insert(i);
-        }
-        map<int,int>m;
-        for(auto &i:s1)
-        {
-            m[i]++;
-        }
-        for(auto &i:s2)
-        {
-            m[i]++;
-        }
-        for(auto &i:s3)
-        {
-            m[i]++;
-        }
+    vector<int> commonElements(vector<int> &a, vector<int> &b, vector<int> &c) {
+        // code here
+        int i=0,j=0,k=0;
         vector<int>ans;
-        for(auto &i:m)
+        while(a.size()>i && b.size()>j && c.size()>k)
         {
-            if(i.second==3)
+            if(a[i]==b[j] && b[j]==c[k])
             {
-                ans.push_back(i.first);
+                if(ans.empty() || ans.back()!=a[i])
+                {
+                    ans.push_back(a[i]);
+                }
+                i++;
+                j++;
+                k++;
+            }
+            else if(a[i]<=b[j] && a[i]<=c[k])
+            {
+                i++;
+            }
+            else if(b[j]<=a[i] && b[j]<=c[k])
+            {
+                j++;
+            }
+            else if(c[k]<=a[i] && c[k]<=b[j])
+            {
+                k++;
             }
         }
         return ans;
