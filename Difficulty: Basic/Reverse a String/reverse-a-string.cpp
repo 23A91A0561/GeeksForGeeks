@@ -1,9 +1,13 @@
 // User function Template for C++
 class Solution {
   public:
-    string revStr(string s) {
+    string reverseString(string& s) {
         // code here
-        reverse(s.begin(),s.end());
+        int n=s.size();
+        for(int i=0;i<s.size()/2;i++)
+        {
+            swap(s[i],s[n-i-1]);
+        }
         return s;
     }
 };
