@@ -2,19 +2,21 @@ class Solution {
   public:
     int findKRotation(vector<int> &arr) {
         // Code Here
-        vector<int>temp=arr;
-        for(auto &i:temp)
+        int l=0,h=arr.size()-1;
+        int Min=1000000,idx=0;
+        while(l<h)
         {
-            arr.push_back(i);
-        }
-        sort(temp.begin(),temp.end());
-        for(int i=0;i<arr.size();i++)
-        {
-            if(arr[i]==temp[0])
+            int m=l+(h-l)/2;
+            if(arr[m]>arr[h])
             {
-                return i;
+                l=m+1;
             }
+            else
+            {
+                h=m;
+            }
+            
         }
-        return 1;
+        return l;
     }
 };
